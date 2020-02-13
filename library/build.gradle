@@ -22,3 +22,9 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.ext.androidxAppCompatVersion"
     implementation "com.google.android.material:material:$rootProject.ext.androidxMaterialVersion"
 }
+
+apply from: '../publish_local.gradle'
+project.ext {
+    artifactId = 'BreadcrumbsView'
+    groupId = 'io.zhuliang'
+}
