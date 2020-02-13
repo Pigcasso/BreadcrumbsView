@@ -3,20 +3,27 @@ package moe.feng.common.view.breadcrumbs;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-import moe.feng.common.view.breadcrumbs.demo.R;
-import moe.feng.common.view.breadcrumbs.model.BreadcrumbItem;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import moe.feng.common.view.breadcrumbs.demo.R;
+import moe.feng.common.view.breadcrumbs.model.BreadcrumbItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,6 +98,23 @@ public class MainActivity extends AppCompatActivity {
 				// I am lazy. It's unnecessary to tell a developer why cannot deny the permission.
 			}
 		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.menu_change_color) {
+			mBreadcrumbsView.setTextColor(ColorStateList.valueOf(Color.argb(127, 33, 33, 33)));
+			mBreadcrumbsView.setSelectedTextColor(ColorStateList.valueOf(Color.rgb(33, 33, 33)));
+			mBreadcrumbsView.notifyDataSetChanged();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	private void openFileManager() {

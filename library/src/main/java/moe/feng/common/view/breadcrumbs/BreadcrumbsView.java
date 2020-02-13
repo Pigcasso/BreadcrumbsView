@@ -131,6 +131,10 @@ public class BreadcrumbsView extends FrameLayout {
 		mAdapter.notifyItemChanged(index * 2);
 	}
 
+	public void notifyDataSetChanged() {
+		mAdapter.notifyDataSetChanged();
+	}
+
 	/**
 	 * Add a new item
 	 *
@@ -223,6 +227,14 @@ public class BreadcrumbsView extends FrameLayout {
 
 	public ColorStateList getTextColor() {
 		return mTextColor;
+	}
+
+	public void setTextColor(ColorStateList textColor) {
+		mTextColor = textColor;
+	}
+
+	public void setSelectedTextColor(ColorStateList selectedTextColor) {
+		mSelectedTextColor = selectedTextColor;
 	}
 
 	public ColorStateList getSelectedTextColor() {

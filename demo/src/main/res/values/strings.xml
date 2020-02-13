@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">BreadcrumbsView Demo</string>
+	<string name="change_color">修改颜色</string>
 </resources>

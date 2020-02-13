@@ -137,13 +137,7 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
 
 		ArrowIconHolder(View itemView) {
 			super(itemView);
-			Drawable normalDrawable = AppCompatDrawableManager.get().getDrawable(getContext(), R.drawable.ic_chevron_right_black_24dp);
-			// Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_chevron_right_black_24dp);
-			Drawable wrapDrawable = DrawableCompat.wrap(normalDrawable);
-			// DrawableCompat.setTint(wrapDrawable, ViewUtils.getColorFromAttr(getContext(), android.R.attr.textColorSecondary));
-			DrawableCompat.setTintList(wrapDrawable, parent.getTextColor());
 			imageButton = (ImageButton) itemView;
-			imageButton.setImageDrawable(wrapDrawable);
 			imageButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
@@ -162,6 +156,12 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
 		@Override
 		public void setItem(@NonNull IBreadcrumbItem item) {
 			super.setItem(item);
+			Drawable normalDrawable = AppCompatDrawableManager.get().getDrawable(getContext(), R.drawable.ic_chevron_right_black_24dp);
+			// Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_chevron_right_black_24dp);
+			Drawable wrapDrawable = DrawableCompat.wrap(normalDrawable);
+			// DrawableCompat.setTint(wrapDrawable, ViewUtils.getColorFromAttr(getContext(), android.R.attr.textColorSecondary));
+			DrawableCompat.setTintList(wrapDrawable, parent.getTextColor());
+			imageButton.setImageDrawable(wrapDrawable);
 			imageButton.setClickable(item.hasMoreSelect());
 			if (item.hasMoreSelect()) {
 				List<Map<String, String>> list = new ArrayList<>();
